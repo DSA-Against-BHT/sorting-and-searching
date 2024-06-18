@@ -15,23 +15,21 @@ Resources:
 ```
 ├── README.md
 └── src
-    └── sorting
-        ├── Sorts-algo
-        │   ├── sort1.cpp
-        │   ├── sort2.cpp
-        │   ├── sort3.cpp
-        │   ├── ...
-        │   ├── bubble-sort.cpp
-        │   ├── insertion-sort.cpp
-        │   └── ...
-        ├── generator
-        │   ├── random.cpp
-        │   └── ...
-        ├── algo_mode.cpp
-        ├── comp_mode.cpp
-        ├── handle_flag.cpp
-        └── main.cpp
-
+    ├── Sorts-algo
+    │   ├── sort1.cpp
+    │   ├── sort2.cpp
+    │   ├── sort3.cpp
+    │   ├── ...
+    │   ├── bubble-sort.cpp
+    │   ├── insertion-sort.cpp
+    │   └── ...
+    ├── generator
+    │   ├── random.cpp
+    │   └── ...
+    ├── algo_mode.cpp
+    ├── comp_mode.cpp
+    ├── handle_flag.cpp
+    └── main.cpp
 ```
 
 # 2. Project instruction
