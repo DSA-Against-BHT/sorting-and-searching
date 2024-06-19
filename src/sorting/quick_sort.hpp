@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-void test() {
-    cout << "Hello from quick_sort.hpp\n";
-}
+void Quick_Sort(int* arr, int n);
+void Quick_Sort_Count(int* arr, int n, int& count);

@@ -80,6 +80,8 @@ void Command_3(string algo1, int inputtSize, string outputParameter) {
 void Command_4(string algo1, string algo2, string givenInput) {
     cout << "Hello from Command_4\n";
     cout << algo1 << ' ' << algo2 << ' ' << givenInput << '\n';
+    Handle_Command_4(algo1, algo2, givenInput);
+
 }
 
 void Command_5(string algo1, string algo2, int size, string inputOrder) {
