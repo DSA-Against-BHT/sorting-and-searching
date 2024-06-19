@@ -4,51 +4,39 @@
 
 /*
     Parameters: 
-    +inputSize <> - the size of the input 
-    +inputOrder<char*>  -rand, -sorted, -rev, -nsorted
-    Output: filePath<char*> - the path to the file
+    +inputSize <int> - the size of the input 
+    +inputOrder<string>  -rand, -sorted, -rev, -nsorted
+    Output: 0 if successful, -1 if failed
     File format:
         line 1: size of the input
         line 2: each element of the input is separated by a space
 */
-string Gen_Data_File(int inputSize, char* inputOrder){
-    string fileName, filePath;
+int Gen_Data_File(int inputSize, string inputOrder, string fileName){
+    string filePath;
     int* arr = new int[inputSize];
     
     //Random
-    if(strcmp(inputOrder, "-rand") == 0)
-    {
-        GenerateRandomData(arr, inputSize);
-        fileName = "input_1.txt";    
-    }
-    //Nearly sorted
-    else if(strcmp(inputOrder, "-nsorted") == 0)
-	{
+	if(inputOrder == "-rand")
+		GenerateRandomData(arr, inputSize);
+	//Nearly sorted
+	else if(inputOrder == "-nsorted")
 		GenerateNearlySortedData(arr, inputSize);
-		fileName = "input_2.txt";
-	}
 	//Sorted
-	else if(strcmp(inputOrder, "-sorted") == 0)
-	{
+	else if(inputOrder == "-sorted")
 		GenerateSortedData(arr, inputSize);
-		fileName = "input_3.txt";
-	}
 	//Reverse
-	else if(strcmp(inputOrder, "-rev") == 0)
-	{
+	else if(inputOrder == "-rev")
 		GenerateReverseData(arr, inputSize);
-		fileName = "input_4.txt";
-	}
 	else
 	{
 		cout << "Invalid input order" << endl;
 		delete[] arr;
-		return "";
+		return -1;
 	}
 
 	//Write to file
 	filePath = "input/" + fileName;
-	ofstream file(filePath);
+	ofstream file(filePath.c_str());
 	if(file.is_open())
 	{
 		file << inputSize << endl;
@@ -61,19 +49,10 @@ string Gen_Data_File(int inputSize, char* inputOrder){
 	else
 	{
 		cout << "Unable to open file" << endl;
-		return "";
+		delete[] arr;
+		return -1;
 	}
-	return fileName;
-}
-
-void GenerateRandomData(int a[], int n)
-{
-	srand((unsigned int)time(NULL));
-
-	for (int i = 0; i < n; i++)
-	{
-		a[i] = rand()%n;
-	}
+	return 0;
 }
 
 

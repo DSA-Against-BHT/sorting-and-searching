@@ -6,6 +6,6 @@
 #include <ctime>
 #include <random>
 #include <string>
-
 using namespace std;
-string Gen_Data_File(int inputSize, char* inputOrder);
+
+int Gen_Data_File(int inputSize, string inputOrder, string fileName);
