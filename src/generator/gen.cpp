@@ -3,25 +3,31 @@
 
 
 /*
-    Parameters: 
-    +inputSize <char*> - the size of the input 
+    Parameters:
+    +inputSize <char*> - the size of the input
     +inputOrder<char*>  -rand, -sorted, -rev, -nsorted
     Output: filePath<char*> - the path to the file
     File format:
         line 1: size of the input
         line 2: each element of the input is separated by a space
 */
-char* generateDataFile(char* inputSize, char* inputOrder){
+string Gen_Data_File(int inputSize, string input){
     char* filePath = (char*)malloc(100);
-    int size = atoi(inputSize);
-    sprintf(filePath, "%s%s.txt", inputOrder+1, inputSize);
+    char* inputOrder = new char[input.size() + 1];
+    for (int i = 0 ; i < input.size(); i ++)
+        inputOrder[i] = input[i];
+    inputOrder[input.size()] = '\0';
 
+    int size = inputSize;
+    // cout << input << ' ' << inputOrder << '\n';
+    sprintf(filePath, "../input/%s%d.txt", inputOrder + 1, inputSize);
+    // cout << filePath << '\n';
     std::ofstream file(filePath);
     if(!file.is_open()){
         std::cout << "Error opening file" << std::endl;
-        return NULL;
+        return "err";
     }
-    
+
     file << size << std::endl;
 
     //Random
@@ -45,7 +51,7 @@ char* generateDataFile(char* inputSize, char* inputOrder){
         for(int i = 0; i < size; i++){
             file << i* 10 + rand() % 30<< " ";
         }
-        
+
     }
     //Reverse
     else if(strcmp(inputOrder, "-rev") == 0)
@@ -56,11 +62,13 @@ char* generateDataFile(char* inputSize, char* inputOrder){
     }
     else
     {
-        
+
         file.close();
         free(filePath);
         return NULL;
     }
     file.close();
-    return filePath;
+
+    string ret = "nsorted10.txt";
+    return ret;
 }

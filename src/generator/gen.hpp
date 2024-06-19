@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <random>
+#include <string>
+using namespace std;
 
-
-char* generateDataFile(char* inputSize, char* inputOrder);
+string Gen_Data_File(int inputSize, string inputOrder);

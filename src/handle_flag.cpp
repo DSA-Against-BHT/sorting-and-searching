@@ -26,7 +26,7 @@ void Command_5(string algo1, string algo2, int size, string inputOrder);
 
 
 void Compare_Mode(int argc, char* argv[]) {
-    cout << "Hello from Compare_Mode\n";
+    cout << "COMPARE MODE\n";
     switch (argc)
     {
         case 5:
@@ -50,7 +50,7 @@ bool is_number(const string& s) {
 }
 
 void Algorithm_Mode(int argc, char* argv[]) {
-    cout << "Hello from Algorithm_Mode\n";
+    cout << "ALGORITHM MODE\n";
     if (argc == 5) {
         if (is_number(argv[3])) {
             Command_3(argv[2], stoi(argv[3]), argv[4]);
@@ -78,13 +78,14 @@ void Command_3(string algo1, int inputtSize, string outputParameter) {
 }
 
 void Command_4(string algo1, string algo2, string givenInput) {
-    cout << "Hello from Command_4\n";
-    cout << algo1 << ' ' << algo2 << ' ' << givenInput << '\n';
+    // cout << "Hello from Command_4\n";
+    // cout << algo1 << ' ' << algo2 << ' ' << givenInput << '\n';
     Handle_Command_4(algo1, algo2, givenInput);
 
 }
 
 void Command_5(string algo1, string algo2, int size, string inputOrder) {
-    cout << "Hello from Command_5\n";
-    cout << algo1 << ' ' << algo2 << ' ' << size << ' ' << inputOrder << '\n';
+    // cout << "Hello from Command_5\n";
+    // cout << algo1 << ' ' << algo2 << ' ' << size << ' ' << inputOrder << '\n';
+    Handle_Command_5(algo1, algo2, size, inputOrder);
 }

@@ -62,6 +62,7 @@ Please see the following instruction before contributing to the project.
 ```bash
 # g++ ./*.cpp -o ./main.exe
 g++ ./*.cpp ./sorting/*.cpp -o main.exe
+g++ ./*.cpp ./sorting/*.cpp ./generator/*.cpp -o main.exe
 ```
 
 - Run
