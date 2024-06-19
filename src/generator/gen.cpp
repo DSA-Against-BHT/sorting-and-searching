@@ -63,7 +63,7 @@ string Gen_Data_File(int inputSize, char* inputOrder){
 		cout << "Unable to open file" << endl;
 		return "";
 	}
-	return filePath;
+	return fileName;
 }
 
 void GenerateRandomData(int a[], int n)
