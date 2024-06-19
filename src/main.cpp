@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-    test();
+    // test();
 
     char mode = argv[1][1];
     cout << mode << '\n';
@@ -16,10 +16,10 @@ int main(int argc, char* argv[]) {
     switch (mode)
     {
         case 'c':
-            Compare_Mode(argv[2], argv[3], argv[4], argv[5]);
+            Compare_Mode(argc, argv);
             break;
         case 'a':
-            Algorithm_Mode(argv[2], argv[3], argv[4], argv[5]);
+            Algorithm_Mode(argc, argv);
             break;
         default:
             break;
