@@ -1,15 +1,15 @@
 #include "shell_sort.hpp"
 
-void Ssort(int* arr, int n){
+void shellSort(int* arr, int n){
     // cout << "hello world";
 }
 
-void Ssort_Count(int* arr, int n, int &count){
+void shellSort_Count(int* arr, int n, int &count){
     // cout << "hello world";
 }
 
 void Shell_Sort(int* arr, int n){
-    Ssort(arr, n);
+    shellSort(arr, n);
 }
 
 /*
@@ -17,5 +17,5 @@ From selection_sort.hpp
 */
 void Shell_Sort_Count(int* arr, int n, int& count){
     count = 0;
-    Ssort_Count(arr, n, count);
+    shellSort_Count(arr, n, count);
 }
