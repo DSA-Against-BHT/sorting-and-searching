@@ -27,15 +27,14 @@ char* generateDataFile(char* inputSize, char* inputOrder){
     //Random
     if(strcmp(inputOrder, "-rand") == 0)
     {
-        std::cout<< "Generating random data...";
+        srand(time(0));
         for(int i = 0; i < size; i++){
-            file << rand() % 100000000 << " ";
+            file << rand() % 1000000 << " ";
         }
     }
     //Sorted
     else if(strcmp(inputOrder, "-sorted") == 0)
     {
-        std::cout<< "Generating sorted data...";
         for(int i = 0; i < size; i++){
             file << i<< " ";
         }
