@@ -8,4 +8,4 @@
 #include <string>
 
 using namespace std;
-string generateDataFile(e, char* inputOrder);
+string Gen_Data_File(int inputSize, char* inputOrder);
