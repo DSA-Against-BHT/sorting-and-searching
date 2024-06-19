@@ -21,10 +21,9 @@ so we need to have a function to check if the input is a number or a string.
 /*
 In this mode, you have to run TWO specified sorting algorithms on the input data, which is either given or generated automatically and presents the resulting running times and/or numbers of comparisons.
 */
-void Compare_Mode(char* algo1, char* algo2, char* inputSize, char* inputOrder);
-
+void Compare_Mode(int argc, char* argv[]);
 
 /*
 In this mode, you are asked to run a specified sorting algorithm on the input data, which is either given or generated automatically and presents the resulting running time and/or number of comparisons.
 */
-void Algorithm_Mode(char* algo, char* giveInput, char* inputOrder, char* outputParam);
+void Algorithm_Mode(int argc, char* argv[]);
