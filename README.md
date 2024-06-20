@@ -93,3 +93,22 @@ g++ ./*.cpp ./sorting/*.cpp ./generator/*.cpp -o main.exe
 # 3. Project note
 
 - **Please read the instruction carefully before contributing to the project.**
+- Example using namespace
+```cpp
+#include <iostream>
+
+namespace EXAMPLE { // các hàm trong namespace sẽ dc coi như khai báo global, nhưng chỉ khác là muốn gọi thì phải có <tên namespace>::<tên hàm>
+    void test() {
+        std::cout << "Hello, World!" << std::endl;
+    }
+
+    int arr[10];
+}
+
+int main() {
+    EXAMPLE::test();
+    EXAMPLE::a[0] = 123;
+    cout << EXAMPLE::a[0];
+    return 0;
+}
+```
