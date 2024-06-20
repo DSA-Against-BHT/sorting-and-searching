@@ -60,15 +60,35 @@ Please see the following instruction before contributing to the project.
 
 - Compile
 ```bash
-# g++ ./*.cpp -o ./main.exe
-g++ ./*.cpp ./sorting/*.cpp -o main.exe
 g++ ./*.cpp ./sorting/*.cpp ./generator/*.cpp -o main.exe
 ```
 
 - Run
+### Command 1
 ```bash
-./main.exe
+./main.exe -a radix-sort input.txt -both
 ```
+
+### Command 2
+```bash
+./main.exe -a selection-sort 50 -rand -time
+```
+
+### Command 3
+```bash
+./main.exe -a binary-insertion-sort 70000 -comp
+```
+
+### Command 4
+```bash
+./main.exe -c heap-sort merge-sort input.txt
+```
+
+### Command 5
+```bash
+./main.exe -c bubble-sort quick-sort 1000 -nsorted
+```
+
 
 # 3. Project note
 
