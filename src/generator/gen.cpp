@@ -1,10 +1,13 @@
 #include "gen.hpp"
 
-
+void GenerateRandomData(int a[], int n);
+void GenerateSortedData(int a[], int n);
+void GenerateReverseData(int a[], int n);
+void GenerateNearlySortedData(int a[], int n);
 
 /*
-    Parameters: 
-    +inputSize <int> - the size of the input 
+    Parameters:
+    +inputSize <int> - the size of the input
     +inputOrder<string>  -rand, -sorted, -rev, -nsorted
     Output: 0 if successful, -1 if failed
     File format:
@@ -14,7 +17,7 @@
 int Gen_Data_File(int inputSize, string inputOrder, string fileName){
     string filePath;
     int* arr = new int[inputSize];
-    
+
     //Random
 	if(inputOrder == "-rand")
 		GenerateRandomData(arr, inputSize);
@@ -35,7 +38,7 @@ int Gen_Data_File(int inputSize, string inputOrder, string fileName){
 	}
 
 	//Write to file
-	filePath = "input/" + fileName;
+	filePath = "../input/" + fileName;
 	ofstream file(filePath.c_str());
 	if(file.is_open())
 	{
@@ -97,6 +100,6 @@ void GenerateNearlySortedData(int a[], int n)
 	{
 		int r1 = rand()%n;
 		int r2 = rand()%n;
-		swap(a[r1], a[r2]);	
+		swap(a[r1], a[r2]);
 	}
 }
