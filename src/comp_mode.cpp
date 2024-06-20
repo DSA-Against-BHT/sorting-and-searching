@@ -39,8 +39,10 @@ void Handle_Command_4(string algo1, string algo2, string givenInput) {
 
 void Handle_Command_5(string algo1, string algo2, int inputSize, string inputOrder) {
 
-    string createdInput = Gen_Data_File(inputSize, inputOrder);
-    if (createdInput == "err") {
+    string createdInput = "input.txt";
+    int err = Gen_Data_File(inputSize, inputOrder, createdInput);
+
+    if (err == -1) {
         cout << "error occured while generating!!";
         return;
     }

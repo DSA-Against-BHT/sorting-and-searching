@@ -10,6 +10,18 @@ int Parse_Param(const string outputParameter) {
     if (outputParameter == "-comp") return COMP;
 }
 
+
+namespace ORDER {
+
+    void Randomize(string filename, int inputSize, string outputParam) {
+        cout << "Input order: Randomize" << endl;
+        cout << "-------------------------" << endl;
+
+
+    }
+
+}
+
 void Handle_Command_1(string algo1, string givenInput, string outputParameter) {
 
 }
@@ -23,7 +35,5 @@ void Handle_Command_2(string algo1, int inputtSize, string inputOrder, string ou
 void Handle_Command_3(string algo1, int inputtSize, string outputParameter) {
     cout << "Algorithm: " << algo1 << endl;
     cout << "Input size: " << inputtSize << endl;
-
-
 
 }
