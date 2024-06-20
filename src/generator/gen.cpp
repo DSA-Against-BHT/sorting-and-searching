@@ -58,7 +58,6 @@ int Gen_Data_File(int inputSize, string inputOrder, string fileName){
 	return 0;
 }
 
-
 // Hàm phát sinh mảng dữ liệu ngẫu nhiên
 void GenerateRandomData(int a[], int n)
 {

@@ -60,16 +60,55 @@ Please see the following instruction before contributing to the project.
 
 - Compile
 ```bash
-# g++ ./*.cpp -o ./main.exe
-g++ ./*.cpp ./sorting/*.cpp -o main.exe
 g++ ./*.cpp ./sorting/*.cpp ./generator/*.cpp -o main.exe
 ```
 
 - Run
+### Command 1
 ```bash
-./main.exe
+./main.exe -a radix-sort input.txt -both
 ```
+
+### Command 2
+```bash
+./main.exe -a selection-sort 50 -rand -time
+```
+
+### Command 3
+```bash
+./main.exe -a binary-insertion-sort 70000 -comp
+```
+
+### Command 4
+```bash
+./main.exe -c heap-sort merge-sort input.txt
+```
+
+### Command 5
+```bash
+./main.exe -c bubble-sort quick-sort 1000 -nsorted
+```
+
 
 # 3. Project note
 
 - **Please read the instruction carefully before contributing to the project.**
+- Example using namespace
+```cpp
+#include <iostream>
+
+namespace EXAMPLE { // các hàm trong namespace sẽ dc coi như khai báo global, nhưng chỉ khác là muốn gọi thì phải có <tên namespace>::<tên hàm>
+    void test() {
+        std::cout << "Hello, World!" << std::endl;
+    }
+
+    int arr[10];
+}
+
+int main() {
+    EXAMPLE::test();
+    EXAMPLE::a[0] = 123;
+    cout << EXAMPLE::a[0];
+    return 0;
+}
+```
