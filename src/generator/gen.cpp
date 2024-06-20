@@ -3,72 +3,100 @@
 
 
 /*
-    Parameters:
-    +inputSize <char*> - the size of the input
-    +inputOrder<char*>  -rand, -sorted, -rev, -nsorted
-    Output: filePath<char*> - the path to the file
+    Parameters: 
+    +inputSize <int> - the size of the input 
+    +inputOrder<string>  -rand, -sorted, -rev, -nsorted
+    Output: 0 if successful, -1 if failed
     File format:
         line 1: size of the input
         line 2: each element of the input is separated by a space
 */
-string Gen_Data_File(int inputSize, string input){
-    char* filePath = (char*)malloc(100);
-    char* inputOrder = new char[input.size() + 1];
-    for (int i = 0 ; i < input.size(); i ++)
-        inputOrder[i] = input[i];
-    inputOrder[input.size()] = '\0';
-
-    int size = inputSize;
-    // cout << input << ' ' << inputOrder << '\n';
-    sprintf(filePath, "../input/%s%d.txt", inputOrder + 1, inputSize);
-    // cout << filePath << '\n';
-    std::ofstream file(filePath);
-    if(!file.is_open()){
-        std::cout << "Error opening file" << std::endl;
-        return "err";
-    }
-
-    file << size << std::endl;
-
+int Gen_Data_File(int inputSize, string inputOrder, string fileName){
+    string filePath;
+    int* arr = new int[inputSize];
+    
     //Random
-    if(strcmp(inputOrder, "-rand") == 0)
-    {
-        srand(time(0));
-        for(int i = 0; i < size; i++){
-            file << rand() % 1000000 << " ";
-        }
-    }
-    //Sorted
-    else if(strcmp(inputOrder, "-sorted") == 0)
-    {
-        for(int i = 0; i < size; i++){
-            file << i<< " ";
-        }
-    }
-    //Nearly sorted
-    else if(strcmp(inputOrder, "-nsorted") == 0)
-    {
-        for(int i = 0; i < size; i++){
-            file << i* 10 + rand() % 30<< " ";
-        }
+	if(inputOrder == "-rand")
+		GenerateRandomData(arr, inputSize);
+	//Nearly sorted
+	else if(inputOrder == "-nsorted")
+		GenerateNearlySortedData(arr, inputSize);
+	//Sorted
+	else if(inputOrder == "-sorted")
+		GenerateSortedData(arr, inputSize);
+	//Reverse
+	else if(inputOrder == "-rev")
+		GenerateReverseData(arr, inputSize);
+	else
+	{
+		cout << "Invalid input order" << endl;
+		delete[] arr;
+		return -1;
+	}
 
-    }
-    //Reverse
-    else if(strcmp(inputOrder, "-rev") == 0)
-    {
-        for(int i = size; i > 0; i--){
-            file << i << " ";
-        }
-    }
-    else
-    {
+	//Write to file
+	filePath = "input/" + fileName;
+	ofstream file(filePath.c_str());
+	if(file.is_open())
+	{
+		file << inputSize << endl;
+		for(int i = 0; i < inputSize; i++)
+		{
+			file << arr[i] << " ";
+		}
+		file.close();
+	}
+	else
+	{
+		cout << "Unable to open file" << endl;
+		delete[] arr;
+		return -1;
+	}
+	return 0;
+}
 
-        file.close();
-        free(filePath);
-        return NULL;
-    }
-    file.close();
 
-    string ret = "nsorted10.txt";
-    return ret;
+// Hàm phát sinh mảng dữ liệu ngẫu nhiên
+void GenerateRandomData(int a[], int n)
+{
+	srand((unsigned int)time(NULL));
+
+	for (int i = 0; i < n; i++)
+	{
+		a[i] = rand()%n;
+	}
+}
+
+// Hàm phát sinh mảng dữ liệu có thứ tự tăng dần
+void GenerateSortedData(int a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		a[i] = i;
+	}
+}
+
+// Hàm phát sinh mảng dữ liệu có thứ tự ngược (giảm dần)
+void GenerateReverseData(int a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		a[i] = n - 1 - i;
+	}
+}
+
+// Hàm phát sinh mảng dữ liệu gần như có thứ tự
+void GenerateNearlySortedData(int a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		a[i] = i;
+	}
+	srand((unsigned int) time(NULL));
+	for (int i = 0; i < 10; i ++)
+	{
+		int r1 = rand()%n;
+		int r2 = rand()%n;
+		swap(a[r1], a[r2]);	
+	}
 }
