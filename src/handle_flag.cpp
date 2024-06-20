@@ -63,18 +63,21 @@ void Algorithm_Mode(int argc, char* argv[]) {
 }
 
 void Command_1(string algo1, string givenInput, string outputParameter) {
-    cout << "Hello from Command_1\n";
-    cout << algo1 << ' ' << givenInput << ' ' << outputParameter << '\n';
+    // cout << "Hello from Command_1\n";
+    // cout << algo1 << ' ' << givenInput << ' ' << outputParameter << '\n';
+    Handle_Command_1(algo1, givenInput, outputParameter);
 }
 
 void Command_2(string algo1, int inputtSize, string inputOrder, string outputParameter) {
-    cout << "Hello from Command_2\n";
-    cout << algo1 << ' ' << inputtSize << ' ' << inputOrder << ' ' << outputParameter << '\n';
+    // cout << "Hello from Command_2\n";
+    // cout << algo1 << ' ' << inputtSize << ' ' << inputOrder << ' ' << outputParameter << '\n';
+    Handle_Command_2(algo1, inputtSize, inputOrder, outputParameter);
 }
 
 void Command_3(string algo1, int inputtSize, string outputParameter) {
-    cout << "Hello from Command_3\n";
-    cout << algo1 << ' ' << inputtSize << ' ' << outputParameter << '\n';
+    // cout << "Hello from Command_3\n";
+    // cout << algo1 << ' ' << inputtSize << ' ' << outputParameter << '\n';
+    Handle_Command_3(algo1, inputtSize, outputParameter);
 }
 
 void Command_4(string algo1, string algo2, string givenInput) {

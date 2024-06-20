@@ -33,7 +33,8 @@ void Call_Sort(const string name, int* arr, int n);
 
 
 /*
-This function will call the sorting function with counting
+- This function will call the sorting function with counting
+- will first set count = 0
 */
 void Call_Sort_Counting(const string name, int* arr, int n, int& cntComp);
 

@@ -79,5 +79,4 @@ void Handle_Command_5(string algo1, string algo2, int inputSize, string inputOrd
 
     delete[] copy;
     delete[] arr;
-
 }
