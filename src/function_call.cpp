@@ -126,5 +126,5 @@ pair<double, double> Get_Time(const string& algo, int *arr, int size) {
     Call_Sort(algo, arr, size);
     timer.stop();
 
-    return {timer.elapsedSeconds(), timer.elapsedMilliseconds()};
+    return pair<double, double>(timer.elapsedSeconds(), timer.elapsedMilliseconds());
 }
