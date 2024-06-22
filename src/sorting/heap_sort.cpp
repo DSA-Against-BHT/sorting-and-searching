@@ -1,19 +1,63 @@
 #include "heap_sort.hpp"
 
-void Hsort(int* arr, int n){
-    // cout << "hello world";
+void heapify(int* arr, int n, int i, int& count){
+    // Initialize largest as root
+    int largest = i;
+
+    // left = 2*i + 1
+    int l = 2 * i + 1;
+
+    // right = 2*i + 2
+    int r = 2 * i + 2;
+
+    // If left child is larger than root
+    if (++count && ++count && l < n && arr[l] > arr[largest]) largest = l;
+    // If right child is larger than largest
+    // so far
+    if (++count && ++count && r < n && arr[r] > arr[largest]) largest = r;
+
+    // If largest is not root
+    if (++count && largest != i) {
+        swap(arr[i], arr[largest]);
+        // Recursively heapify the affected
+        // sub-tree
+        heapify(arr, n, largest, count);
+    }
 }
 
-void Hsort_Count(int* arr, int n, int &count){
-    // cout << "hello world";
+void Hsort(int* arr, int n, int &count){
+    // Build heap (rearrange array)
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i, count);
+    // One by one extract an element
+    // from heap
+    for (int i = n - 1; i > 0; i--) {
+        // Move current root to end
+        swap(arr[0], arr[i]);
+        // call max heapify on the reduced heap
+        heapify(arr, i, 0, count);
+    }
 }
 
-void Heap_Sort(int* arr, int n){
-    Hsort(arr, n);
+void Hsort_Count(int* arr, int n, int& count){
+    for (int i = n / 2 - 1; ++count && i >= 0; i--)
+        heapify(arr, n, i, count);
+    for (int i = n - 1; ++count && i > 0; i--) {
+        swap(arr[0], arr[i]);
+        heapify(arr, i, 0, count);
+    }
 }
 
 /*
-From selection_sort.hpp
+This function is used to sort the array using heap sort
+*/
+void Heap_Sort(int* arr, int n){
+    int count = 0;
+    Hsort(arr, n, count);
+}
+
+/*
+This function is used to sort the array using heap sort and count the number of comparisons
 */
 void Heap_Sort_Count(int* arr, int n, int& count){
     count = 0;
