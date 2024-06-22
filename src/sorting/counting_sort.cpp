@@ -12,7 +12,7 @@ void Csort(int* arr, int n){
     for (int i = 0; i <= max; i++) cnt[i] = 0;
 
     // count of each element
-    for (int i = 0; i <= max; i++) cnt[arr[i]]++;
+    for (int i = 0; i < n; i++) cnt[arr[i]]++;
 
     // calculate the position of each element
     for (int i = 1; i <= max; i++) cnt[i] += cnt[i - 1];
@@ -39,7 +39,7 @@ void Csort_Count(int* arr, int n, int& count){
     int* cnt = new int[max + 1];
     for (int i = 0; ++count && i <= max; i++) cnt[i] = 0;
 
-    for (int i = 0; ++count && i <= max; i++) cnt[arr[i]]++;
+    for (int i = 0; ++count && i < n; i++) cnt[arr[i]]++;
     for (int i = 1; ++count && i <= max; i++) cnt[i] += cnt[i - 1];
 
     int* res = new int[n];
