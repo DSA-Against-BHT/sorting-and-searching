@@ -24,12 +24,16 @@ void Csort(int* arr, int n){
         cnt[arr[i]]--;
     }
     for (int i = 0; i < n; i++) arr[i] = res[i];
+
+    // free the memory
+    delete[] cnt;
+    delete[] res;
 }
 
 void Csort_Count(int* arr, int n, int& count){
     int max = arr[0];
     for (int i = 0; ++count && i < n; i++) {
-        if (arr[i] > max) max = arr[i];
+        if (++count && arr[i] > max) max = arr[i];
     }
 
     int* cnt = new int[max + 1];
@@ -44,6 +48,9 @@ void Csort_Count(int* arr, int n, int& count){
         cnt[arr[i]]--;
     }
     for (int i = 0; ++count && i < n; i++) arr[i] = res[i];
+
+    delete[] cnt;
+    delete[] res;
 }
 
 /*
