@@ -1,6 +1,6 @@
 #include "shaker_sort.hpp"
 
-void shakerSort(int* arr, int n) {
+void shakerSort(int* arr, int n){
     int left = 0;       // Initialize the left boundary of the unsorted section
     int right = n - 1;  // Initialize the right boundary of the unsorted section
     int k = 0;          // Variable to track the last swap position
