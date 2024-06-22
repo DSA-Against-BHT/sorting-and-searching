@@ -1,20 +1,6 @@
 #include "heap_sort.hpp"
 
-void Heapify(int *arr, int n) {
-    for (int i = n / 2 - 1; i >= 0; i--) {
-        int largest = i;
-        int l = 2 * i + 1;
-        int r = 2 * i + 2;
-        if (l < n && arr[l] > arr[largest]) largest = l;
-        if (r < n && arr[r] > arr[largest]) largest = r;
-        if (largest != i) {
-            swap(arr[i], arr[largest]);
-            Heapify(arr, n);
-        }
-    }
-}
-
-void Heapify_Count(int* arr, int n, int i, int& count){
+void Heapify(int* arr, int n, int i){
     // Initialize largest as root
     int largest = i;
 
@@ -25,26 +11,51 @@ void Heapify_Count(int* arr, int n, int i, int& count){
     int r = 2 * i + 2;
 
     // If left child is larger than root
-    if (++count && ++count && l < n && arr[l] > arr[largest]) largest = l;
+    if (l < n && arr[l] > arr[largest])
+        largest = l;
+
     // If right child is larger than largest
     // so far
-    if (++count && ++count && r < n && arr[r] > arr[largest]) largest = r;
+    if (r < n && arr[r] > arr[largest])
+        largest = r;
 
     // If largest is not root
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+
+        // Recursively Heapify the affected
+        // sub-tree
+        Heapify(arr, n, largest);
+    }
+}
+
+void Heapify_Count(int* arr, int n, int i, int& count){
+    int largest = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
+
+    if (++count && ++count && l < n && arr[l] > arr[largest]) largest = l;
+    if (++count && ++count && r < n && arr[r] > arr[largest]) largest = r;
+
     if (++count && largest != i) {
         swap(arr[i], arr[largest]);
-        // Recursively Heapify_Count the affected
-        // sub-tree
         Heapify_Count(arr, n, largest, count);
     }
 }
 
 void Hsort(int* arr, int n){
+    // Build heap (rearrange array)
     for (int i = n / 2 - 1; i >= 0; i--)
-        Heapify(arr, n);
+        Heapify(arr, n, i);
+
+    // One by one extract an element
+    // from heap
     for (int i = n - 1; i > 0; i--) {
+        // Move current root to end
         swap(arr[0], arr[i]);
-        Heapify(arr, i);
+
+        // call max Heapify on the reduced heap
+        Heapify(arr, i, 0);
     }
 }
 
