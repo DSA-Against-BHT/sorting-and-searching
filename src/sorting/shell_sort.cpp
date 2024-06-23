@@ -28,7 +28,7 @@ void shellSort(int* arr, int n){
 
 void shellSort_Count(int* arr, int n, int& count){
     for (int gap = n / 2; ++count && gap > 0; gap /= 2) {
-        for (int i = gap; ++count && i < n; i += 1) {
+        for (int i = gap; ++count && i < n; i++) {
             int temp = arr[i];
             int j;            
             for (j = i; ++count && j >= gap && ++count && arr[j - gap] > temp; j -= gap)
