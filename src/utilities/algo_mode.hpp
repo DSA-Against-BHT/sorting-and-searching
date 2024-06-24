@@ -5,7 +5,7 @@
 #include <iomanip>
 #include "function_call.hpp"
 #include "timer.hpp"
-#include "./generator/gen.hpp"
+#include "../generator/gen.hpp"
 using namespace std;
 
 void Handle_Command_1(string algo1, string givenInput, string outputParameter);
