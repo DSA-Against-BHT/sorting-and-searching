@@ -16,19 +16,20 @@ Resources:
 ├── README.md
 └── src
     ├── Sorts-algo
-    │   ├── sort1.cpp
-    │   ├── sort2.cpp
-    │   ├── sort3.cpp
+    │   ├── sort1.hpp
+    │   ├── sort2.hpp
+    │   ├── sort3.hpp
     │   ├── ...
-    │   ├── bubble-sort.cpp
-    │   ├── insertion-sort.cpp
+    │   ├── bubble-sort.hpp
+    │   ├── insertion-sort.hpp
     │   └── ...
     ├── generator
-    │   ├── random.cpp
+    │   ├── random.hpp
     │   └── ...
-    ├── algo_mode.cpp
-    ├── comp_mode.cpp
-    ├── handle_flag.cpp
+    ├── utilities
+    │   ├── algo_mode.hpp
+    │   ├── comp_mode.hpp
+    │   └── ...
     └── main.cpp
 ```
 
