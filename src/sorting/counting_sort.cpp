@@ -30,7 +30,7 @@ void Csort(int* arr, int n){
     delete[] res;
 }
 
-void Csort_Count(int* arr, int n, int& count){
+void Csort_Count(int* arr, int n, long long& count){
     int max = arr[0];
     for (int i = 0; ++count && i < n; i++) {
         if (++count && arr[i] > max) max = arr[i];
@@ -63,7 +63,7 @@ void Counting_Sort(int* arr, int n){
 /*
 This function is used to sort the array using counting sort and count the number of comparisons
 */
-void Counting_Sort_Count(int* arr, int n, int& count){
+void Counting_Sort_Count(int* arr, int n, long long& count){
     count = 0;
     Csort_Count(arr, n, count);
 }

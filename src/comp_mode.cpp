@@ -3,18 +3,18 @@
 void Handle_Command_4(string algo1, string algo2, string givenInput) {
 
 
-    const string inputPath = "../input/" + givenInput;
-    const string outputPath = "../output/output.txt";
+    const string inputPath = givenInput;
+    const string outputPath = "output.txt";
 
     int size;
     int *arr = Load_Array(inputPath, size);
     int *copy = new int[size];
 
     Make_Copy(arr, copy, size);
-    int count1 = Get_Count(algo1, copy, size);
+    long long count1 = Get_Count(algo1, copy, size);
 
     Make_Copy(arr, copy, size);
-    int count2 = Get_Count(algo2, copy, size);
+    long long count2 = Get_Count(algo2, copy, size);
 
     Make_Copy(arr, copy, size);
     pair<double, double> time1 = Get_Time(algo1, copy, size);
@@ -47,18 +47,18 @@ void Handle_Command_5(string algo1, string algo2, int inputSize, string inputOrd
         return;
     }
 
-    const string inputPath = "../input/" + createdInput;
-    const string outputPath = "../output/output.txt";
+    const string inputPath = createdInput;
+    const string outputPath = "output.txt";
 
     int size;
     int *arr = Load_Array(inputPath, size);
     int *copy = new int[size];
 
     Make_Copy(arr, copy, size);
-    int count1 = Get_Count(algo1, copy, size);
+    long long count1 = Get_Count(algo1, copy, size);
 
     Make_Copy(arr, copy, size);
-    int count2 = Get_Count(algo2, copy, size);
+    long long count2 = Get_Count(algo2, copy, size);
 
     Make_Copy(arr, copy, size);
     pair<double, double> time1 = Get_Time(algo1, copy, size);

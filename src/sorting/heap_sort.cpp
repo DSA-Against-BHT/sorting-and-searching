@@ -29,7 +29,7 @@ void Heapify(int* arr, int n, int i){
     }
 }
 
-void Heapify_Count(int* arr, int n, int i, int& count){
+void Heapify_Count(int* arr, int n, int i, long long& count){
     int largest = i;
     int l = 2 * i + 1;
     int r = 2 * i + 2;
@@ -59,7 +59,7 @@ void Hsort(int* arr, int n){
     }
 }
 
-void Hsort_Count(int* arr, int n, int& count){
+void Hsort_Count(int* arr, int n, long long& count){
     for (int i = n / 2 - 1; ++count && i >= 0; i--)
         Heapify_Count(arr, n, i, count);
     for (int i = n - 1; ++count && i > 0; i--) {
@@ -78,7 +78,7 @@ void Heap_Sort(int* arr, int n){
 /*
 This function is used to sort the array using heap sort and count the number of comparisons
 */
-void Heap_Sort_Count(int* arr, int n, int& count){
+void Heap_Sort_Count(int* arr, int n, long long& count){
     count = 0;
     Hsort_Count(arr, n, count);
 }

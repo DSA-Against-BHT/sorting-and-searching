@@ -51,7 +51,7 @@ void Call_Sort(const string name, int* arr, int n) {
     // }
 }
 
-void Call_Sort_Counting(const string name, int* arr, int n, int& cntComp) {
+void Call_Sort_Counting(const string name, int* arr, int n, long long& cntComp) {
   if (name == "selection-sort") {
         Selection_Sort_Count(arr, n, cntComp);
     } else if (name == "insertion-sort") {
@@ -113,8 +113,8 @@ void Make_Copy(int* arr, int *copy, int size) {
     }
 }
 
-int Get_Count(const string& algo, int *arr, int size) {
-    int count = 0;
+long long Get_Count(const string& algo, int *arr, int size) {
+    long long count = 0;
     Call_Sort_Counting(algo, arr, size, count);
     return count;
 }

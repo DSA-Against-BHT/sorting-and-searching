@@ -4,4 +4,4 @@
 using namespace std;
 
 void Radix_Sort(int* arr, int n);
-void Radix_Sort_Count(int* arr, int n, int& count);
+void Radix_Sort_Count(int* arr, int n, long long& count);

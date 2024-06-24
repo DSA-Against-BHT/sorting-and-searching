@@ -4,4 +4,4 @@
 using namespace std;
 
 void Heap_Sort(int* arr, int n);
-void Heap_Sort_Count(int* arr, int n, int& count);
+void Heap_Sort_Count(int* arr, int n, long long& count);

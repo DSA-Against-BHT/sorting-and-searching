@@ -7,7 +7,7 @@ void Isort(int* arr, int n){
         j = i - 1;
 
         // Move elements of arr[0..i-1],
-        // that are greater than key, 
+        // that are greater than key,
         // to one position ahead of their
         // current position
         while (j >= 0 && arr[j] > key) {
@@ -18,7 +18,7 @@ void Isort(int* arr, int n){
     }
 }
 
-void Isort_Count(int* arr, int n, int& count){
+void Isort_Count(int* arr, int n, long long& count){
     int i, key, j;
     for (i = 1; ++count && i < n; i++) {
         key = arr[i];
@@ -41,7 +41,7 @@ void Insertion_Sort(int* arr, int n){
 /*
 This function is used to sort the array using insertion sort and count the number of comparisons
 */
-void Insertion_Sort_Count(int* arr, int n, int& count){
+void Insertion_Sort_Count(int* arr, int n, long long& count){
     count = 0;
     Isort_Count(arr, n, count);
 }

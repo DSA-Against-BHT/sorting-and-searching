@@ -38,7 +38,7 @@ int Gen_Data_File(int inputSize, string inputOrder, string fileName){
 	}
 
 	//Write to file
-	filePath = "../input/" + fileName;
+	filePath = fileName;
 	ofstream file(filePath.c_str());
 	if(file.is_open())
 	{

@@ -4,7 +4,7 @@ void Bsort(int* arr, int n){
     // cout << "hello world";
 }
 
-void Bsort_Count(int* arr, int n, int &count){
+void Bsort_Count(int* arr, int n, long long& count){
     // cout << "hello world";
 }
 
@@ -15,7 +15,7 @@ void Bubble_Sort(int* arr, int n){
 /*
 From selection_sort.hpp
 */
-void Bubble_Sort_Count(int* arr, int n, int& count){
+void Bubble_Sort_Count(int* arr, int n, long long& count){
     count = 0;
     Bsort_Count(arr, n, count);
 }

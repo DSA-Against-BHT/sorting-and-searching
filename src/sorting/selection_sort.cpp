@@ -22,7 +22,7 @@ void Ssort(int* arr, int n){
     }
 }
 
-void Ssort_Count(int* arr, int n, int &count){
+void Ssort_Count(int* arr, int n, long long& count){
     int i, j, min_index;
 
     for (i = 0; ++count && i < n - 1; i++) {
@@ -45,7 +45,7 @@ void Selection_Sort(int* arr, int n){
 /*
 This function is used to sort the array using selection sort and count the number of comparisons
 */
-void Selection_Sort_Count(int* arr, int n, int& count){
+void Selection_Sort_Count(int* arr, int n, long long& count){
     count = 0;
     Ssort_Count(arr, n, count);
 }

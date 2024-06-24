@@ -58,33 +58,33 @@ Please see the following instruction before contributing to the project.
 
 ## 2.3. How to compile and run
 
-- Compile
+### Compile
 ```bash
-g++ ./*.cpp ./sorting/*.cpp ./generator/*.cpp -o main.exe
+g++ ./sorting/*.cpp ./generator/*.cpp ./*.cpp -o main.exe
 ```
 
-- Run
-### Command 1
+### Run
+##### Command 1
 ```bash
 ./main.exe -a radix-sort input.txt -both
 ```
 
-### Command 2
+##### Command 2
 ```bash
 ./main.exe -a selection-sort 50 -rand -time
 ```
 
-### Command 3
+##### Command 3
 ```bash
 ./main.exe -a binary-insertion-sort 70000 -comp
 ```
 
-### Command 4
+##### Command 4
 ```bash
 ./main.exe -c heap-sort merge-sort input.txt
 ```
 
-### Command 5
+##### Command 5
 ```bash
 ./main.exe -c bubble-sort quick-sort 1000 -nsorted
 ```

@@ -4,4 +4,4 @@
 using namespace std;
 
 void Flash_Sort(int* arr, int n);
-void Flash_Sort_Count(int* arr, int n, int& count);
+void Flash_Sort_Count(int* arr, int n, long long& count);

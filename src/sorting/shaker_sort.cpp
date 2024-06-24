@@ -27,26 +27,26 @@ void shakerSort(int* arr, int n){
     }
 }
 
-void shakerSort_Count(int* arr, int n, int& count){
-    int left = 0;       
-    int right = n - 1;  
-    int k = 0;          
+void shakerSort_Count(int* arr, int n, long long& count){
+    int left = 0;
+    int right = n - 1;
+    int k = 0;
 
     while (++count && left < right) {
         for (int i = left; ++count && i < right; i++) {
-            if (++count && arr[i] > arr[i + 1]) {  
-                swap(arr[i], arr[i + 1]);  
-                k = i; 
+            if (++count && arr[i] > arr[i + 1]) {
+                swap(arr[i], arr[i + 1]);
+                k = i;
             }
         }
-        right = k;  
+        right = k;
         for (int i = right; ++count && i > left; i--) {
-            if (++count && arr[i] < arr[i - 1]) {  
-                swap(arr[i], arr[i - 1]);  
-                k = i;  
+            if (++count && arr[i] < arr[i - 1]) {
+                swap(arr[i], arr[i - 1]);
+                k = i;
             }
         }
-        left = k; 
+        left = k;
     }
 }
 
@@ -60,7 +60,7 @@ void Shaker_Sort(int* arr, int n){
 /*
 This function is used to sort the array using shaker sort and count the number of comparisons
 */
-void Shaker_Sort_Count(int* arr, int n, int& count){
+void Shaker_Sort_Count(int* arr, int n, long long& count){
     count = 0;
     shakerSort_Count(arr, n, count);
 }

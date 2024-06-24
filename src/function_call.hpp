@@ -36,7 +36,7 @@ void Call_Sort(const string name, int* arr, int n);
 - This function will call the sorting function with counting
 - will first set count = 0
 */
-void Call_Sort_Counting(const string name, int* arr, int n, int& cntComp);
+void Call_Sort_Counting(const string name, int* arr, int n, long long& cntComp);
 
 /*
 This function is used to load the array from the path, then return then array in form of pointer and change the size
@@ -62,4 +62,4 @@ pair<double, double> Get_Time(const string& algo, int *arr, int size);
 /*
     return the number of comparisons
 */
-int Get_Count(const string& algo, int *arr, int size);
+long long Get_Count(const string& algo, int *arr, int size);

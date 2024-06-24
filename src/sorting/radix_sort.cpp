@@ -12,7 +12,7 @@ int Get_Max(int* arr, int n){
 // A function to do counting sort of arr[] according to the digit represented by exp.
 void Count_Sort(int* arr, int n, int exp){
     // Output array
-    int output[n];
+    int* output = new int [n];
     int i, cnt[10] = { 0 };
 
     // Store count of occurrences in count[]
@@ -32,6 +32,8 @@ void Count_Sort(int* arr, int n, int exp){
     // Copy the output array to arr[], so that arr[] now contains sorted numbers according to current digit
     for (i = 0; i < n; i++)
         arr[i] = output[i];
+
+    delete [] output;
 }
 
 
@@ -45,7 +47,7 @@ void Rsort(int* arr, int n){
         Count_Sort(arr, n, exp);
 }
 
-int Get_Max_Count(int* arr, int n, int& count){
+int Get_Max_Count(int* arr, int n, long long& count){
     int mx = arr[0];
     for (int i = 1; ++count && i < n; i++)
         if (++count && arr[i] > mx)
@@ -53,8 +55,8 @@ int Get_Max_Count(int* arr, int n, int& count){
     return mx;
 }
 
-void Count_Sort_Count(int* arr, int n, int exp, int& count){
-    int output[n];
+void Count_Sort_Count(int* arr, int n, int exp, long long& count){
+    int* output = new int[n];
     int i, cnt[10] = { 0 };
 
     for (i = 0; ++count && i < n; i++)
@@ -72,9 +74,11 @@ void Count_Sort_Count(int* arr, int n, int exp, int& count){
     // Copy the output array to arr[], so that arr[] now contains sorted numbers according to current digit
     for (i = 0; ++count && i < n; i++)
         arr[i] = output[i];
+
+    delete [] output;
 }
 
-void Rsort_Count(int* arr, int n, int &count){
+void Rsort_Count(int* arr, int n, long long& count){
     int m = Get_Max_Count(arr, n, count);
     for (int exp = 1; m / exp > 0; exp *= 10)
         Count_Sort_Count(arr, n, exp, count);
@@ -90,7 +94,7 @@ void Radix_Sort(int* arr, int n){
 /*
 This function is used to sort the array using radix sort and count the number of comparisons
 */
-void Radix_Sort_Count(int* arr, int n, int& count){
+void Radix_Sort_Count(int* arr, int n, long long& count){
     count = 0;
     Rsort_Count(arr, n, count);
 }

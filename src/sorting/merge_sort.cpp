@@ -51,7 +51,7 @@ void Merge(int* arr, int const left, int const mid, int const right){
     delete[] right_arr;
 }
 
-void Merge_Count(int* arr, int const left, int const mid, int const right, int& count){
+void Merge_Count(int* arr, int const left, int const mid, int const right, long long& count){
     int const sub1 = mid - left + 1;
     int const sub2 = right - mid;
 
@@ -103,7 +103,7 @@ void Msort(int* arr, int const begin, int const end){
     Merge(arr, begin, mid, end);
 }
 
-void Msort_Count(int* arr, int const begin, int const end, int& count){
+void Msort_Count(int* arr, int const begin, int const end, long long& count){
     if (++count && begin >= end) return;
 
     int mid = begin + (end - begin) / 2;
@@ -123,7 +123,7 @@ void Merge_Sort(int* arr, int n){
 /*
 This function is used to sort the array using merge sort and count the number of comparisons
 */
-void Merge_Sort_Count(int* arr, int n, int& count){
+void Merge_Sort_Count(int* arr, int n, long long& count){
     count = 0;
     Msort_Count(arr, 0, n - 1, count);
 }
