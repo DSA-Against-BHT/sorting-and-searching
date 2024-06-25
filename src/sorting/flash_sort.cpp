@@ -15,7 +15,7 @@ void Fsort(int* arr, int n){
 
     // Calculate the distribution
     for (int i = 0; i < n; i++) {
-        int index = static_cast<int>((m - 1) * (arr[i] - min_val) / (max_val - min_val));
+        int index = static_cast<int>((m - 1) * ((double)(arr[i] - min_val) / (max_val - min_val)));
         distribution[index]++;
     }
 
@@ -32,13 +32,13 @@ void Fsort(int* arr, int n){
     while (k > threshold) {
         while (i > distribution[j] - 1) {
             i++;
-            j = static_cast<int>((m - 1) * (arr[i] - min_val) / (max_val - min_val));
+            j = static_cast<int>((m - 1) * ((double)(arr[i] - min_val) / (max_val - min_val)));
         }
 
         int flash = arr[i];
 
         while (i != distribution[j]) {
-            j = static_cast<int>((m - 1) * (flash - min_val) / (max_val - min_val));
+            j = static_cast<int>((m - 1) * ((double)(flash - min_val) / (max_val - min_val)));
 
             int temp = arr[distribution[j] - 1];
             arr[distribution[j] - 1] = flash;
@@ -76,7 +76,7 @@ void Fsort_Count(int* arr, int n, long long& count){
     int* distribution = new int[m + 1]();
 
     for (int i = 0; ++count && i < n; i++) {
-        int index = static_cast<int>((m - 1) * (arr[i] - min_val) / (max_val - min_val));
+        int index = static_cast<int>((m - 1) * ((double)(arr[i] - min_val) / (max_val - min_val)));
         distribution[index]++;
     }
     for (int i = 1; ++count && i < m; i++)
@@ -90,12 +90,12 @@ void Fsort_Count(int* arr, int n, long long& count){
     while (++count && k > threshold) {
         while (++count && i > distribution[j] - 1) {
             i++;
-            j = static_cast<int>((m - 1) * (arr[i] - min_val) / (max_val - min_val));
+            j = static_cast<int>((m - 1) * ((double)(arr[i] - min_val) / (max_val - min_val)));
         }
 
         int flash = arr[i];
         while (++count && i != distribution[j]) {
-            j = static_cast<int>((m - 1) * (flash - min_val) / (max_val - min_val));
+            j = static_cast<int>((m - 1) * ((double)(flash - min_val) / (max_val - min_val)));
             int temp = arr[distribution[j] - 1];
             arr[distribution[j] - 1] = flash;
             flash = temp;
