@@ -80,7 +80,7 @@ void Count_Sort_Count(int* arr, int n, int exp, long long& count){
 
 void Rsort_Count(int* arr, int n, long long& count){
     int m = Get_Max_Count(arr, n, count);
-    for (int exp = 1; m / exp > 0; exp *= 10)
+    for (int exp = 1; ++count && m / exp > 0; exp *= 10)
         Count_Sort_Count(arr, n, exp, count);
 }
 
