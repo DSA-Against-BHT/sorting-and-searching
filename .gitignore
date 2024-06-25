@@ -33,3 +33,6 @@
 
 # input output
 *.txt
+
+# Debug files
+.DS_Store
