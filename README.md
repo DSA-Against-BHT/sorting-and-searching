@@ -61,7 +61,7 @@ Please see the following instruction before contributing to the project.
 
 ### Compile
 ```bash
-g++ ./sorting/*.cpp ./utilities/*.cpp ./generator/*.cpp ./*.cpp -o main.exe
+g++ -std=c++14 ./sorting/*.cpp ./utilities/*.cpp ./generator/*.cpp ./*.cpp -o main.exe
 ```
 
 ### Run
