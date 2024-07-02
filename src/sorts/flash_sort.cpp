@@ -1,118 +1,129 @@
 #include "flash_sort.hpp"
 
-void Fsort(int* arr, int n){
-    // Find the minimum and maximum values in the array
-    int min_val = arr[0];
-    int max_val = arr[0];
-    for (int i = 1; i < n; i++) {
-        if (arr[i] < min_val) min_val = arr[i];
-        if (arr[i] > max_val) max_val = arr[i];
+void Fsort(int* arr, int n) {
+    // Step 1: Find the minimum and maximum values
+    int minVal = arr[0], maxVal = arr[0];
+    for (int i = 1; i < n; ++i) {
+        if (arr[i] < minVal) minVal = arr[i];
+        else if (arr[i] > maxVal) maxVal = arr[i];
     }
 
-    // Create the distribution array
-    int m = static_cast<int>(0.45 * n);
-    int* distribution = new int[m + 1]();
+    // Step 2: Calculate the bucket width
+    const int numBuckets = 100000; // Specify the number of buckets (value of m)
+    double c = (double)(numBuckets - 1) / (maxVal - minVal);
 
-    // Calculate the distribution
-    for (int i = 0; i < n; i++) {
-        int index = static_cast<int>((m - 1) * ((double)(arr[i] - min_val) / (max_val - min_val)));
-        distribution[index]++;
+    // Step 3: Count the number of elements in each bucket
+    int* bucketCounts = new int[numBuckets]();
+    for (int i = 0; i < n; ++i) {
+        int bucketIndex = int(c * (arr[i] - minVal));
+        ++bucketCounts[bucketIndex];
     }
 
-    // Calculate the starting positions
-    for (int i = 1; i < m; i++)
-        distribution[i] += distribution[i - 1];
+    // Step 4: Calculate the prefix sum for buckets
+    int* prefixSum = new int[numBuckets]();
+    for (int i = 1; i < numBuckets; ++i) {
+        prefixSum[i] = prefixSum[i - 1] + bucketCounts[i - 1];
+    }
 
-    // Perform the flash sort
-    int i = 0;
-    int j = m - 1;
-    int k = n - 1;
-    int threshold = static_cast<int>(0.25 * n);
+    // Step 5: Place elements into buckets
+    int* sortedArr = new int[n];
+    for (int i = 0; i < n; ++i) {
+        int bucketIndex = int(c * (arr[i] - minVal));
+        sortedArr[prefixSum[bucketIndex]] = arr[i];
+        ++prefixSum[bucketIndex];
+    }
 
-    while (k > threshold) {
-        while (i > distribution[j] - 1) {
-            i++;
-            j = static_cast<int>((m - 1) * ((double)(arr[i] - min_val) / (max_val - min_val)));
+    // Step 6: Sort each bucket using insertion sort
+    for (int i = 0; i < numBuckets; ++i) {
+        int start;
+        if (i == 0) start = 0;
+        else start = prefixSum[i - 1];
+        int end = prefixSum[i];
+
+        // Insertion sort within the bucket
+        for (int j = start + 1; j < end; ++j) {
+            int key = sortedArr[j];
+            int k = j - 1;
+            while (k >= start && sortedArr[k] > key) {
+                sortedArr[k + 1] = sortedArr[k];
+                k--;
+            }
+            sortedArr[k + 1] = key;
         }
-
-        int flash = arr[i];
-
-        while (i != distribution[j]) {
-            j = static_cast<int>((m - 1) * ((double)(flash - min_val) / (max_val - min_val)));
-
-            int temp = arr[distribution[j] - 1];
-            arr[distribution[j] - 1] = flash;
-            flash = temp;
-
-            distribution[j]--;
-            k--;
-        }
     }
 
-    // Perform the insertion sort
-    for (int i = 1; i < n; i++) {
-        int temp = arr[i];
-        int j = i - 1;
-        while (j >= 0 && arr[j] > temp) {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = temp;
+    // Copy sorted result back to the original array
+    for (int i = 0; i < n; ++i) {
+        arr[i] = sortedArr[i];
     }
 
-    // Free the memory
-    delete[] distribution;
+    // Free allocated memory
+    delete[] bucketCounts;
+    delete[] prefixSum;
+    delete[] sortedArr;
 }
 
 void Fsort_Count(int* arr, int n, long long& count){
-    int min_val = arr[0];
-    int max_val = arr[0];
-    for (int i = 1; i < n; i++) {
-        if (++count && arr[i] < min_val) min_val = arr[i];
-        if (++count && arr[i] > max_val) max_val = arr[i];
+    // Step 1: Find the minimum and maximum values
+    int minVal = arr[0], maxVal = arr[0];
+    for (int i = 1; ++count && i < n; ++i) {
+        if (++count && arr[i] < minVal) minVal = arr[i];
+        else if (++count && arr[i] > maxVal) maxVal = arr[i];
     }
 
-    int m = static_cast<int>(0.45 * n);
-    int* distribution = new int[m + 1]();
+    // Step 2: Calculate the bucket width
+    const int numBuckets = 100000; // Specify the number of buckets (value of m)
+    double c = (double)(numBuckets - 1) / (maxVal - minVal);
 
-    for (int i = 0; ++count && i < n; i++) {
-        int index = static_cast<int>((m - 1) * ((double)(arr[i] - min_val) / (max_val - min_val)));
-        distribution[index]++;
+    // Step 3: Count the number of elements in each bucket
+    int* bucketCounts = new int[numBuckets]();
+    for (int i = 0; ++count && i < n; ++i) {
+        int bucketIndex = int(c * (arr[i] - minVal));
+        ++bucketCounts[bucketIndex];
     }
-    for (int i = 1; ++count && i < m; i++)
-        distribution[i] += distribution[i - 1];
 
-    int i = 0;
-    int j = m - 1;
-    int k = n - 1;
-    int threshold = static_cast<int>(0.25 * n);
+    // Step 4: Calculate the prefix sum for buckets
+    int* prefixSum = new int[numBuckets]();
+    for (int i = 1; ++count && i < numBuckets; ++i) {
+        prefixSum[i] = prefixSum[i - 1] + bucketCounts[i - 1];
+    }
 
-    while (++count && k > threshold) {
-        while (++count && i > distribution[j] - 1) {
-            i++;
-            j = static_cast<int>((m - 1) * ((double)(arr[i] - min_val) / (max_val - min_val)));
+    // Step 5: Place elements into buckets
+    int* sortedArr = new int[n];
+    for (int i = 0; ++count && i < n; ++i) {
+        int bucketIndex = int(c * (arr[i] - minVal));
+        sortedArr[prefixSum[bucketIndex]] = arr[i];
+        ++prefixSum[bucketIndex];
+    }
+
+    // Step 6: Sort each bucket using insertion sort
+    for (int i = 0; ++count && i < numBuckets; ++i) {
+        int start;
+        if (++count && i == 0) start = 0;
+        else start = prefixSum[i - 1];
+        int end = prefixSum[i];
+
+        // Insertion sort within the bucket
+        for (int j = start + 1; ++count && j < end; ++j) {
+            int key = sortedArr[j];
+            int k = j - 1;
+            while (++count && k >= start && ++count && sortedArr[k] > key) {
+                sortedArr[k + 1] = sortedArr[k];
+                k--;
+            }
+            sortedArr[k + 1] = key;
         }
+    }
 
-        int flash = arr[i];
-        while (++count && i != distribution[j]) {
-            j = static_cast<int>((m - 1) * ((double)(flash - min_val) / (max_val - min_val)));
-            int temp = arr[distribution[j] - 1];
-            arr[distribution[j] - 1] = flash;
-            flash = temp;
-            distribution[j]--;
-            k--;
-        }
+    // Copy sorted result back to the original array
+    for (int i = 0; ++count && i < n; ++i) {
+        arr[i] = sortedArr[i];
     }
-    for (int i = 1; ++count && i < n; i++) {
-        int temp = arr[i];
-        int j = i - 1;
-        while (++count && j >= 0 && ++count && arr[j] > temp) {
-            arr[j + 1] = arr[j];
-            j--;
-        }
-        arr[j + 1] = temp;
-    }
-    delete[] distribution;
+
+    // Free allocated memory
+    delete[] bucketCounts;
+    delete[] prefixSum;
+    delete[] sortedArr;
 }
 
 /*
